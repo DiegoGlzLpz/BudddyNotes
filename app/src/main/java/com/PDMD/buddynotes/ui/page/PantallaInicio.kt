@@ -6,18 +6,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.unit.dp
 import com.PDMD.buddynotes.ui.componente.RegistroItem
 import com.PDMD.buddynotes.ui.componente.RegistroItemData
-import com.PDMD.buddynotes.viewmodel.PantallaInicioUIState
+import com.PDMD.buddynotes.ui.theme.BuddyNotesTheme
 import com.PDMD.buddynotes.viewmodel.PantallaInicioVM
 
 @Composable
@@ -53,7 +51,7 @@ fun PantallaInicio(
 @Preview
 @Composable
 fun PantallaInicioPreview() {
-    MaterialTheme() {
+    BuddyNotesTheme() {
         PantallaInicio()
     }
 }

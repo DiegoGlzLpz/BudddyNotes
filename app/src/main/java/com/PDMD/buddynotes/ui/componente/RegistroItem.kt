@@ -1,23 +1,26 @@
 package com.PDMD.buddynotes.ui.componente
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardDefaults.cardElevation
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxColors
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import java.util.Date
 
 
@@ -30,10 +33,14 @@ data class RegistroItemData(
 
 @Composable
 fun RegistroItem(data: RegistroItemData,modifier: Modifier = Modifier){
-    var checked by remember { mutableStateOf(true) }
     Card(
-        modifier = modifier.fillMaxWidth(),
-        elevation = cardElevation(defaultElevation = 2.dp)
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = 3.dp)
+            ,colors = CardDefaults.cardColors(
+            containerColor = Color.Transparent // <-- Esto elimina el color de fondo de la card
+        )
+
     ){
         Row(
             modifier = Modifier
@@ -44,15 +51,21 @@ fun RegistroItem(data: RegistroItemData,modifier: Modifier = Modifier){
 
 
         ){
+            Checkbox( modifier = Modifier,
+                checked = data.fecha_fin_registro != null,
+                onCheckedChange = { data.fecha_fin_registro = Date() },
+                colors = CheckboxDefaults.colors(
+                    MaterialTheme.colorScheme.onTertiaryContainer,
+                        )
+
+
+            )
+            val tareaCompletada =if(data.fecha_fin_registro != null){TextDecoration.LineThrough}else{TextDecoration.None}
             Text(modifier= Modifier
                     .padding(start= 8.dp)
                 .weight(1f) ,
-                text = data.registro
-            )
-            Checkbox( modifier = Modifier,
-                checked = data.fecha_fin_registro != null,
-                onCheckedChange = { data.fecha_fin_registro = Date() }
-
+                text = data.registro,
+                textDecoration = tareaCompletada
             )
         }
     }
