@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BuddyNotes</string>
+    <string name="resumenTareas_LIstaTareasCard">%1$d de %2$d</string>
+    <string name="tareasPendientes_ListaTareasCard">%1$d pendiente</string>
+    <string name="tareasCompletadas_ListaTareasCard">%1$d tareas completadas</string>
+    <string name="botonDetalles_ListaTareasCard">Ver detalles</string>
+    <string name="descripcion_ListaTareasCard">Descripcion</string>
+    <string name="tareasRealizadas_HistoricoCard">Tareas Realizadas</string>
+    <string name="bloqueada_HistoricoCard">Bloqueada</string>
+    <string name="historialDeNotas_PantallaHistorico">Historial de Notas</string>
+    <string name="eyeIcon_ListaTareasCard">Icono de un ojo</string>
+    <string name="watchIcon_ListaTareasCard">Icono de un reloj</string>
+    <string name="dotIcon_DetalleHistoricoCard">Icono de un punto decorativo</string>
 </resources>

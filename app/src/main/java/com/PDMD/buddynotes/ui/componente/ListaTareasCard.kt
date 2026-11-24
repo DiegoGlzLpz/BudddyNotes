@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -85,7 +86,7 @@ fun ListaTareasCard(
         Column(
             modifier=Modifier
                 .fillMaxWidth()
-                .padding(start=30.dp, top=15.dp, end=30.dp, bottom = 15.dp)
+                .padding(start = 30.dp, top = 15.dp, end = 30.dp, bottom = 15.dp)
                 ,
             verticalArrangement = Arrangement.Center
 
@@ -104,7 +105,7 @@ fun ListaTareasCard(
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
-                    Text(text="Descripcion",
+                    Text(text= stringResource(R.string.descripcion_ListaTareasCard),
                         modifier = Modifier
                             .fillMaxWidth(0.8f),
                         style = MaterialTheme.typography.bodyMedium,
@@ -117,7 +118,7 @@ fun ListaTareasCard(
                     color= colorDetalles,
                     modifier = Modifier
                         .padding(
-                            top=10.dp,
+                            top = 10.dp,
                             bottom = 10.dp
                         )
                         .border(
@@ -128,11 +129,15 @@ fun ListaTareasCard(
 
                 ){
                     Box(modifier = Modifier
-                            .wrapContentWidth()
-                            .padding(start = 10.dp,end=10.dp),
+                        .wrapContentWidth()
+                        .padding(start = 10.dp, end = 10.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text ="$tareasCompletadas de $tareasTotales",
+                        Text(text = stringResource(
+                            R.string.resumenTareas_LIstaTareasCard,
+                            tareasCompletadas,
+                            tareasTotales
+                        ),
                             style = MaterialTheme.typography.titleMedium,
                             color = colorLetraDetalles)
                     }
@@ -143,10 +148,10 @@ fun ListaTareasCard(
                     .fillMaxWidth()
             ) {
                 Row(modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(6.dp))
-                        .background(color = MaterialTheme.colorScheme.background)
-                        .padding(10.dp,10.dp)
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(color = MaterialTheme.colorScheme.background)
+                    .padding(10.dp, 10.dp)
                         ,
                     horizontalArrangement = Arrangement.SpaceBetween,
                     ){
@@ -156,21 +161,27 @@ fun ListaTareasCard(
                     ) {
                         Icon(
                             painter = iconoTareas,
-                            contentDescription = "Icono de un reloj",
+                            contentDescription = stringResource(R.string.watchIcon_ListaTareasCard),
                             modifier = Modifier
                                 .size(26.dp)
-                                .padding(end=10.dp),
+                                .padding(end = 10.dp),
                             tint = colorLetraDetalles,
                         )
                         Text(
-                            text = "$tareasCompletadas tareas completadas",
+                            text = stringResource(
+                                R.string.tareasCompletadas_ListaTareasCard,
+                                tareasCompletadas
+                            ),
                             modifier = Modifier,
                             textAlign = TextAlign.Start,
                             fontSize = 12.sp
                         )
                     }
                     Text(
-                        text ="$tareasPendientes pendiente",
+                        text = stringResource(
+                            R.string.tareasPendientes_ListaTareasCard,
+                            tareasPendientes
+                        ),
                         modifier = Modifier,
                         fontSize = 12.sp,
                         textAlign = TextAlign.End,
@@ -181,14 +192,14 @@ fun ListaTareasCard(
                     progress = {tareasCompletadas.toFloat()/tareasTotales.toFloat()},
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top=20.dp,bottom=5.dp),
+                        .padding(top = 20.dp, bottom = 5.dp),
                     color = colorLetraDetalles,
                     trackColor = colorDetalles,
                     strokeCap = StrokeCap.Round
                 )
                 Row(modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top=5.dp),
+                    .padding(top = 5.dp),
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically
                 ){
@@ -197,14 +208,14 @@ fun ListaTareasCard(
                     ) {
                         Icon(
                            painter = painterResource(id = R.drawable.ic_details_icon),
-                           contentDescription = "Icono de un reloj",
+                           contentDescription = stringResource(R.string.eyeIcon_ListaTareasCard),
                            modifier = Modifier,
                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(0.7f)
                         )
                         Spacer(modifier= Modifier.width(8.dp))
                         Text(
                             modifier = Modifier,
-                            text = "Ver detalles",
+                            text = stringResource(R.string.botonDetalles_ListaTareasCard),
                             fontSize = 9.sp,
                             lineHeight = 9.sp,//Tuve que darle el mismo tamaño de linea porque si no se desfasaba
                             textAlign = TextAlign.Start,

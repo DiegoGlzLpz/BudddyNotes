@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -80,7 +81,7 @@ fun DetalleHisticoCard(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(all=8.dp)
+            .padding(all = 8.dp)
     ){
         Row(modifier = Modifier
             .fillMaxWidth(),
@@ -92,14 +93,14 @@ fun DetalleHisticoCard(
             ){
                 Icon(
                     painter = painterResource(id = R.drawable.ic_point),
-                    contentDescription = "Icono de un reloj",
+                    contentDescription = stringResource(R.string.dotIcon_DetalleHistoricoCard),
                     modifier = Modifier
                         .size(8.dp),
                     tint = MaterialTheme.colorScheme.onTertiaryContainer,
                 )
                 Text(
                     modifier = Modifier.padding(start=4.dp),
-                    text = "Tareas Realizadas",
+                    text = stringResource(R.string.tareasRealizadas_HistoricoCard),
                     textAlign = TextAlign.Start,
                     fontWeight = FontWeight.Bold
                 )
@@ -109,7 +110,7 @@ fun DetalleHisticoCard(
                 color= MaterialTheme.colorScheme.onPrimary.copy(0.3f),
                 modifier = Modifier
                     .padding(
-                        top=10.dp,
+                        top = 10.dp,
                         bottom = 10.dp
                     )
                     .border(
@@ -122,10 +123,10 @@ fun DetalleHisticoCard(
             ){
                 Box(modifier = Modifier
                     .wrapContentWidth()
-                    .padding(start = 10.dp,end=10.dp),
+                    .padding(start = 10.dp, end = 10.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(text ="Bloqueada",
+                    Text(text = stringResource(R.string.bloqueada_HistoricoCard),
                         style = MaterialTheme.typography.titleMedium,
                         fontSize = 10.sp,
                         color = MaterialTheme.colorScheme.onPrimary)
@@ -140,7 +141,7 @@ fun DetalleHisticoCard(
         LazyColumn(
             modifier = modifier
                 .fillMaxSize()
-                .padding(top=5.dp),
+                .padding(top = 5.dp),
             contentPadding = PaddingValues(16.dp,8.dp),
             verticalArrangement = Arrangement.spacedBy(-4.dp)
         ) {
@@ -168,7 +169,6 @@ val datosEjemplo : ListaTareas? =diasAnteriores.find{ lda -> lda.id_lista==2}
 fun DetalleHistoricoCardPreview() {
     BuddyNotesTheme() {
         DetalleHisticoCard(
-
             data = DetalleHistoricoData(datosEjemplo!!.id_lista,datosEjemplo.fecha_lista,datosEjemplo.tareas)
         )
     }

@@ -15,9 +15,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.PDMD.buddynotes.R
 import com.PDMD.buddynotes.ui.componente.ListaTareasCard
 import com.PDMD.buddynotes.ui.componente.ListaTareasData
 import com.PDMD.buddynotes.ui.theme.Background
@@ -45,14 +47,14 @@ fun PantallaHistorico(
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=24.dp,top=15.dp),
-            text="Historial de Notas",
+                .padding(start = 24.dp, top = 15.dp),
+            text= stringResource(R.string.historialDeNotas_PantallaHistorico),
             style = MaterialTheme.typography.titleLarge
         )
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=24.dp)
+                .padding(start = 24.dp)
             ,
             text="Consulta las notas de días anteriores",
             style = MaterialTheme.typography.bodySmall
