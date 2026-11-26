@@ -30,7 +30,7 @@ fun PantallaDetalleHistorico(
     var state = vm.uiState.collectAsState()
     var datos =state.value.listaRegistrosDetalle
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(idDia) {
         vm.cargarDetalleHistorico(idDia)
     }
     Column(modifier=modifier
