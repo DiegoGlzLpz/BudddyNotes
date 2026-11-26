@@ -24,26 +24,20 @@ import com.PDMD.buddynotes.viewmodel.PantallaDetalleHistoricoVM
 @Composable
 fun PantallaDetalleHistorico(
     modifier: Modifier = Modifier,
-    vm: PantallaDetalleHistoricoVM = viewModel()
+    vm: PantallaDetalleHistoricoVM = viewModel(),
+    idDia: Int
 ) {
     var state = vm.uiState.collectAsState()
     var datos =state.value.listaRegistrosDetalle
 
     LaunchedEffect(Unit) {
-        vm.cargarDetalleHistorico()
+        vm.cargarDetalleHistorico(idDia)
     }
     Column(modifier=modifier
         .fillMaxWidth()
         .background(Background),
         horizontalAlignment =Alignment.CenterHorizontally
         ){
-        Text(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start=24.dp,top=15.dp),
-            text="WIP",
-            style = MaterialTheme.typography.titleLarge
-        )
         Text(
             modifier = Modifier
                 .fillMaxWidth()
@@ -70,6 +64,6 @@ fun PantallaDetalleHistorico(
 @Composable
 fun PantallaDetalleHistoricoPreview() {
     BuddyNotesTheme() {
-        PantallaDetalleHistorico()
+        PantallaDetalleHistorico(idDia = 3)
     }
 }

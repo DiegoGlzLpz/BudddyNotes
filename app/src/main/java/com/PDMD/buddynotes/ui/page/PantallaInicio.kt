@@ -26,12 +26,12 @@ fun PantallaInicio(
     var state = vm.uiState.collectAsState()
 
     LaunchedEffect(Unit) {
-        vm.load()
+        vm.dailyTasksLoad()
     }
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(top=30.dp),
+            .padding(top=50.dp),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {

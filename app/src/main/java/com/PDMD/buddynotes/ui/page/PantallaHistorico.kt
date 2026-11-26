@@ -68,7 +68,7 @@ fun PantallaHistorico(
                 listaDia ->
                 ListaTareasCard(
                     data = ListaTareasData(listaDia.id_lista,listaDia.fecha_lista,listaDia.tareas),
-                    onClick= { onListaClick(listaDia.id_lista)}
+                    onDetallesClick= { }
                 )
             }
         }

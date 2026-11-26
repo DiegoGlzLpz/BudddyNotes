@@ -53,7 +53,7 @@ data class ListaTareasData(
 @Composable
 fun ListaTareasCard(
     data: ListaTareasData,
-    onClick:() ->Unit,
+    onDetallesClick:() ->Unit,
     modifier: Modifier = Modifier
 ){
     val tareasPendientes = data.tareas.count{it.fecha_fin_registro==null}
@@ -76,8 +76,7 @@ fun ListaTareasCard(
         painterResource(id = R.drawable.ic_pending_tasks)
     }
     Card(modifier = modifier
-        .fillMaxWidth()
-        .clickable(onClick = onClick),
+        .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.inverseOnSurface,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -102,8 +101,9 @@ fun ListaTareasCard(
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
                             .fillMaxWidth(0.8f),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold
+                        )
                     )
                     Text(text= stringResource(R.string.descripcion_ListaTareasCard),
                         modifier = Modifier
@@ -203,7 +203,7 @@ fun ListaTareasCard(
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically
                 ){
-                    Button(onClick = { },
+                    Button(onClick = onDetallesClick,
                         modifier = Modifier.height(30.dp),
                     ) {
                         Icon(
@@ -244,7 +244,7 @@ fun ListaTareasCardPreview() {
                     Tarea(3, "Leer", Date(), Date()),
                 )
             ),
-            onClick = {}
+            onDetallesClick = {}
         )
     }
 

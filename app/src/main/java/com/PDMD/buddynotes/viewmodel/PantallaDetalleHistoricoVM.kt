@@ -11,7 +11,7 @@ import com.PDMD.buddynotes.model.datosEjemplolistaTareasHistorico as diasAnterio
 import java.util.Date
 
 data class PantallaDetalleHistoricoUIState(
-    val id_DetalleHistorico:Int = 2,
+    val id_DetalleHistorico:Int = -1,
     val listaRegistrosDetalle: ListaTareas = ListaTareas(0,Date(),listOf())
 ){}
 
@@ -22,9 +22,14 @@ class PantallaDetalleHistoricoVM: ViewModel(){
     private val _uiState = MutableStateFlow(PantallaDetalleHistoricoUIState())
     val uiState: StateFlow<PantallaDetalleHistoricoUIState> = _uiState.asStateFlow();
 
-    fun cargarDetalleHistorico(){
-        _uiState.update { //Si la encontramos bien, si no una vacia
-            it.copy(listaRegistrosDetalle = diasAnteriores.find{ lda -> lda.id_lista==it.id_DetalleHistorico}?:ListaTareas(0,Date(),listOf()))
+    fun cargarDetalleHistorico(idDia: Int){
+        _uiState.update {
+            val searchList = diasAnteriores.find{ lda -> lda.id_lista==idDia}?:ListaTareas(0, Date(), listOf())
+               //Si la encontramos bien, si no una vacia
+            it.copy(
+                id_DetalleHistorico = idDia,
+                listaRegistrosDetalle = searchList
+            )
         }
 
     }

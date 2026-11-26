@@ -76,10 +76,11 @@ fun DetalleHisticoCard(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.inverseOnSurface,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-        )
+        ),
+        modifier = modifier
     ){
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .padding(all = 8.dp)
     ){

@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.PDMD.buddynotes.ui.theme.BuddyNotesTheme
 import java.util.Date
 
 
@@ -32,13 +33,16 @@ data class RegistroItemData(
 )
 
 @Composable
-fun RegistroItem(data: RegistroItemData,modifier: Modifier = Modifier){
+fun RegistroItem(
+    data: RegistroItemData,
+    modifier: Modifier = Modifier
+){
     Card(
         modifier = modifier
             .fillMaxWidth()
             .padding(vertical = 3.dp)
             ,colors = CardDefaults.cardColors(
-            containerColor = Color.Transparent // <-- Esto elimina el color de fondo de la card
+            containerColor = Color.Unspecified
         )
 
     ){
@@ -74,7 +78,7 @@ fun RegistroItem(data: RegistroItemData,modifier: Modifier = Modifier){
 @Preview
 @Composable
 fun RegistroItemPreview() {
-    MaterialTheme() {
+    BuddyNotesTheme() {
         RegistroItem(
             data = RegistroItemData(
                 id_registro = 0,

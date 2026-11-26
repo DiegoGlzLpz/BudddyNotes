@@ -19,7 +19,7 @@ class PantallaInicioVM: ViewModel(){
     private val _uiState = MutableStateFlow(PantallaInicioUIState())
     val uiState = _uiState.asStateFlow();
 
-    fun load(){
+    fun dailyTasksLoad(){
         _uiState.value = _uiState.value.copy(tareasHoy = listOf(
             Tarea(1, "Estudiar",Date(),null),
             Tarea(2, "Programar en Kotlin",Date(),null),
