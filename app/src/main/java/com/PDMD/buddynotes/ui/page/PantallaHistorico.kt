@@ -3,7 +3,6 @@ package com.PDMD.buddynotes.ui.page
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,9 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.PDMD.buddynotes.R
-import com.PDMD.buddynotes.ui.componente.ListaTareasCard
-import com.PDMD.buddynotes.ui.componente.ListaTareasData
-import com.PDMD.buddynotes.ui.theme.Background
+import com.PDMD.buddynotes.ui.componente.ProgressDetailCard
+import com.PDMD.buddynotes.ui.componente.ProgressDetailCardData
 import com.PDMD.buddynotes.ui.theme.BuddyNotesTheme
 import com.PDMD.buddynotes.viewmodel.PantallaHistoricoVM
 
@@ -73,8 +71,14 @@ fun PantallaHistorico(
         ){
             items(uiState.listasDiasAnteriores,key = {it.id_lista}) {
                 listaDia ->
-                ListaTareasCard(
-                    data = ListaTareasData(listaDia.id_lista,listaDia.fecha_lista,listaDia.tareas),
+                ProgressDetailCard(
+                    data = ProgressDetailCardData(
+                        listaDia.id_lista,
+                        listaDia.fecha_lista,
+                        stringResource(R.string.descripcion_ListaTareasCard),
+                        listaDia.tareas.size,
+                        listaDia.tareas.count { it.fecha_fin_registro !=null }
+                    ),
                     onDetallesClick = {
                         onListaClick(listaDia.id_lista)
                     }

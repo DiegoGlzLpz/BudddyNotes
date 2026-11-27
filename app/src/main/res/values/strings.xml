@@ -4,7 +4,7 @@
     <string name="tareasPendientes_ListaTareasCard">%1$d pendiente</string>
     <string name="tareasCompletadas_ListaTareasCard">%1$d tareas completadas</string>
     <string name="botonDetalles_ListaTareasCard">Ver detalles</string>
-    <string name="descripcion_ListaTareasCard">Descripcion</string>
+    <string name="descripcion_ListaTareasCard">Resumen</string>
     <string name="tareasRealizadas_HistoricoCard">Tareas Realizadas</string>
     <string name="bloqueada_HistoricoCard">Bloqueada</string>
     <string name="historialDeNotas_PantallaHistorico">Historial de Notas</string>

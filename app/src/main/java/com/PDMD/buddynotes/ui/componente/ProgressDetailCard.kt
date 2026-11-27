@@ -3,7 +3,6 @@ package com.PDMD.buddynotes.ui.componente
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,33 +43,35 @@ import com.PDMD.buddynotes.model.Tarea
 import com.PDMD.buddynotes.ui.theme.BuddyNotesTheme
 import java.util.Date
 
-data class ListaTareasData(
-    val id_lista: Int ,
-    val fecha_lista: Date ,
-    val tareas: List<Tarea> = listOf()
+data class ProgressDetailCardData(
+    val id: Int ,
+    val title: Date ,
+    val subtitle: String,
+    val total: Int,
+    val completed : Int
 )
 
 @Composable
-fun ListaTareasCard(
-    data: ListaTareasData,
+fun ProgressDetailCard(
+    data: ProgressDetailCardData,
     onDetallesClick:() ->Unit,
     modifier: Modifier = Modifier
 ){
-    val tareasPendientes = data.tareas.count{it.fecha_fin_registro==null}
-    val tareasCompletadas = data.tareas.count{it.fecha_fin_registro!=null}
-    val tareasTotales = data.tareas.size
-    val listaCompletada = (tareasCompletadas == tareasTotales)
-    val colorDetalles = if (listaCompletada){
+    val pending = data.total-data.completed
+    val completed = data.completed
+    val total = data.total
+    val progressCompleted = (completed == total)
+    val detailColor = if (progressCompleted){
         MaterialTheme.colorScheme.secondaryContainer
     }else{
         MaterialTheme.colorScheme.tertiaryContainer
     }
-    val colorLetraDetalles = if (listaCompletada){
+    val detailTextColor = if (progressCompleted){
         MaterialTheme.colorScheme.onSecondaryContainer
     }else{
         MaterialTheme.colorScheme.onTertiaryContainer
     }
-    val iconoTareas =if (listaCompletada){
+    val progressIcon =if (progressCompleted){
         painterResource(id = R.drawable.ic_completed_tasks)
     }else{
         painterResource(id = R.drawable.ic_pending_tasks)
@@ -96,7 +97,7 @@ fun ListaTareasCard(
             ){
                 Column(modifier = Modifier.weight(1f)){
                     Text(
-                        text =FormatterFechas.format(data.fecha_lista),
+                        text =FormatterFechas.format(data.title),
                         textAlign = TextAlign.Start,
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
@@ -105,7 +106,7 @@ fun ListaTareasCard(
                             fontWeight = FontWeight.Bold
                         )
                     )
-                    Text(text= stringResource(R.string.descripcion_ListaTareasCard),
+                    Text(text= data.subtitle,
                         modifier = Modifier
                             .fillMaxWidth(0.8f),
                         style = MaterialTheme.typography.bodyMedium,
@@ -115,7 +116,7 @@ fun ListaTareasCard(
                 }
                 Surface(
                     shape = RoundedCornerShape(6.dp),
-                    color= colorDetalles,
+                    color= detailColor,
                     modifier = Modifier
                         .padding(
                             top = 10.dp,
@@ -123,7 +124,7 @@ fun ListaTareasCard(
                         )
                         .border(
                             width = 1.dp,
-                            color = colorLetraDetalles,
+                            color = detailTextColor,
                             shape = RoundedCornerShape(6.dp)
                         )
 
@@ -135,11 +136,11 @@ fun ListaTareasCard(
                     ) {
                         Text(text = stringResource(
                             R.string.resumenTareas_LIstaTareasCard,
-                            tareasCompletadas,
-                            tareasTotales
+                            completed,
+                            total
                         ),
                             style = MaterialTheme.typography.titleMedium,
-                            color = colorLetraDetalles)
+                            color = detailTextColor)
                     }
                 }
             }
@@ -160,17 +161,17 @@ fun ListaTareasCard(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            painter = iconoTareas,
+                            painter = progressIcon,
                             contentDescription = stringResource(R.string.watchIcon_ListaTareasCard),
                             modifier = Modifier
                                 .size(26.dp)
                                 .padding(end = 10.dp),
-                            tint = colorLetraDetalles,
+                            tint = detailTextColor,
                         )
                         Text(
                             text = stringResource(
                                 R.string.tareasCompletadas_ListaTareasCard,
-                                tareasCompletadas
+                                completed
                             ),
                             modifier = Modifier,
                             textAlign = TextAlign.Start,
@@ -180,21 +181,21 @@ fun ListaTareasCard(
                     Text(
                         text = stringResource(
                             R.string.tareasPendientes_ListaTareasCard,
-                            tareasPendientes
+                            pending
                         ),
                         modifier = Modifier,
                         fontSize = 12.sp,
                         textAlign = TextAlign.End,
-                        color = colorLetraDetalles
+                        color = detailTextColor
                         )
                 }
                 LinearProgressIndicator(
-                    progress = {tareasCompletadas.toFloat()/tareasTotales.toFloat()},
+                    progress = {completed.toFloat()/total.toFloat()},
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 20.dp, bottom = 5.dp),
-                    color = colorLetraDetalles,
-                    trackColor = colorDetalles,
+                    color = detailTextColor,
+                    trackColor = detailColor,
                     strokeCap = StrokeCap.Round
                 )
                 Row(modifier = Modifier
@@ -234,15 +235,13 @@ fun ListaTareasCard(
 @Composable
 fun ListaTareasCardPreview() {
     BuddyNotesTheme(){
-        ListaTareasCard(
-            data = ListaTareasData(
-                id_lista = 0,
-                fecha_lista = FormatterFechas.parse("07-11-2026"),
-                tareas = listOf(
-                    Tarea(1, "Estudiar", Date(), null),
-                    Tarea(2, "Programar en Kotlin", Date(), Date()),
-                    Tarea(3, "Leer", Date(), Date()),
-                )
+        ProgressDetailCard(
+            data = ProgressDetailCardData(
+                id = 0,
+                title = FormatterFechas.parse("07-11-2026"),
+                subtitle = stringResource(R.string.descripcion_ListaTareasCard),
+                total = 4,
+                completed = 2
             ),
             onDetallesClick = {}
         )
