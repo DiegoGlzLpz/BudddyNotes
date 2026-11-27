@@ -148,12 +148,14 @@ fun DetalleHisticoCard(
         ) {
             items(data.tareas) { item ->
                 RegistroItem(
-                    RegistroItemData(
+                    data = RegistroItemData(
                         id_registro = item.id_registro,
                         registro = item.registro,
                         fecha_inicio_registro = item.fecha_creacion_registro,
                         fecha_fin_registro = item.fecha_fin_registro
-                    )
+                    ),
+                    onCheckedChange = {/*En el detalle historico no hacemos nada porque queremos que
+                                        no se puedan cambiar los datos o adulterarlos*/}
                 )
             }
         }

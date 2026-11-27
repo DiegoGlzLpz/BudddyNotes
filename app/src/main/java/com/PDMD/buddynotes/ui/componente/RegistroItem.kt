@@ -35,6 +35,7 @@ data class RegistroItemData(
 @Composable
 fun RegistroItem(
     data: RegistroItemData,
+    onCheckedChange:(Boolean) ->Unit,
     modifier: Modifier = Modifier
 ){
     Card(
@@ -57,7 +58,7 @@ fun RegistroItem(
         ){
             Checkbox( modifier = Modifier,
                 checked = data.fecha_fin_registro != null,
-                onCheckedChange = { data.fecha_fin_registro = Date() },
+                onCheckedChange = { checked -> onCheckedChange(checked) },
                 colors = CheckboxDefaults.colors(
                     MaterialTheme.colorScheme.onTertiaryContainer,
                         )
@@ -85,8 +86,8 @@ fun RegistroItemPreview() {
                 registro = "Registro de ejemplo",
                 fecha_inicio_registro = Date(),
                 fecha_fin_registro = null
-
-            )
+            ),
+            onCheckedChange={}
         )
     }
 

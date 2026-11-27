@@ -27,4 +27,19 @@ class PantallaInicioVM: ViewModel(){
         ))
 
     }
+    fun updateTaskStatus(idRegistro: Int, checked: Boolean) {
+        _uiState.update { state ->
+            state.copy(
+                tareasHoy = state.tareasHoy.map { tarea ->
+                    if (tarea.id_registro == idRegistro) {
+                        tarea.copy(
+                            fecha_fin_registro = if (checked) Date() else null
+                        )
+                    } else {
+                        tarea
+                    }
+                }
+            )
+        }
+    }
 }

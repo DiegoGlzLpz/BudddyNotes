@@ -42,7 +42,8 @@ fun PantallaInicio(
                 registro = item.registro,
                 fecha_inicio_registro = item.fecha_creacion_registro,
                 fecha_fin_registro = item.fecha_fin_registro
-                )
+                ),
+                onCheckedChange={checked -> vm.updateTaskStatus(item.id_registro,checked)}
             )
         }
     }
