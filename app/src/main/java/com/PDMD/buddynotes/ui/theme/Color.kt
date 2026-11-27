@@ -49,10 +49,10 @@ val ErrorContainer = Color(0xFFFFDAD6)
 val OnErrorContainer = Color(0xFF93000A)
 
 // Background & Surface
-val Background = Color(0xFFF8F6F3)
+val Background = Color(0xFFFFFCFA)
 val OnBackground = Color(0xFF040B2F)
 
-val Surface = Color(0xFFFFF8F5)
+val Surface = Color(0xFFFFF4E8)
 val OnSurface = Color(0xFF1F1B17)
 val SurfaceVariant = Color(0xFFEAE1DA)
 val OnSurfaceVariant = Color(0xFF534434)
@@ -155,3 +155,6 @@ val SuccessTagBackgroundDark = Color(0xFF022C22)
 val SuccessTagTextDark = Color(0xFFD1FAE5)
 val WarningTagBackgroundDark = Color(0xFF4C0519)
 val WarningTagTextDark = Color(0xFFFFE4E6)
+
+val fondoPostit = Color(0xFFFCF7C1)
+val topPostit = Color(0xFFFCE878)

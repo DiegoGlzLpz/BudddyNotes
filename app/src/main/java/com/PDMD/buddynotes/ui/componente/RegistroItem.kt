@@ -43,7 +43,7 @@ fun RegistroItem(
             .fillMaxWidth()
             .padding(vertical = 3.dp)
             ,colors = CardDefaults.cardColors(
-            containerColor = Color.Unspecified
+            containerColor = Color.Transparent
         )
 
     ){

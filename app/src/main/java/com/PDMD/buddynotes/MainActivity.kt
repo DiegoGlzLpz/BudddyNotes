@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                 val currentRoute = backStackEntry?.destination?.route
 
                 val tituloTopBar = stringResource(R.string.app_name)
-                var mostrarVolverUnicamente = currentRoute?.startsWith("detalleHistorico") == true;
+                val mostrarVolverUnicamente = currentRoute?.startsWith("detalleHistorico") == true;
                 BuddyNotesScaffold(
                     tituloTopBar = tituloTopBar,
                     rutaActual = currentRoute,

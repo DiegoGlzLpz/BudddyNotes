@@ -1,11 +1,13 @@
 package com.PDMD.buddynotes.ui.componente
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -77,12 +79,15 @@ fun DetalleHisticoCard(
             containerColor = MaterialTheme.colorScheme.inverseOnSurface,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant
         ),
-        modifier = modifier
+        modifier = modifier,
+
     ){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = 8.dp)
+            .fillMaxHeight(.8f)
+            .padding(start = 8.dp,end=8.dp,top=8.dp,bottom=15.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ){
         Row(modifier = Modifier
             .fillMaxWidth(),
@@ -90,6 +95,8 @@ fun DetalleHisticoCard(
             horizontalArrangement = Arrangement.SpaceBetween
         ){
             Row(
+                modifier = Modifier
+                    .padding(start=20.dp),
                 verticalAlignment = Alignment.CenterVertically
             ){
                 Icon(
@@ -112,7 +119,8 @@ fun DetalleHisticoCard(
                 modifier = Modifier
                     .padding(
                         top = 10.dp,
-                        bottom = 10.dp
+                        bottom = 10.dp,
+                        end = 10.dp
                     )
                     .border(
                         width = 1.dp,
@@ -139,24 +147,43 @@ fun DetalleHisticoCard(
             thickness = 1.dp,                             // Grosor de la línea
             color = MaterialTheme.colorScheme.outlineVariant // Color opcional adaptado al tema
         )
-        LazyColumn(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(top = 5.dp),
-            contentPadding = PaddingValues(16.dp,8.dp),
-            verticalArrangement = Arrangement.spacedBy(0.dp)
+        Box(
+            modifier=Modifier
+                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .fillMaxWidth(0.9f)
+                .padding(bottom = 15.dp),
+
         ) {
-            items(data.tareas) { item ->
-                RegistroItem(
-                    data = RegistroItemData(
-                        id_registro = item.id_registro,
-                        registro = item.registro,
-                        fecha_inicio_registro = item.fecha_creacion_registro,
-                        fecha_fin_registro = item.fecha_fin_registro
-                    ),
-                    onCheckedChange = {/*En el detalle historico no hacemos nada porque queremos que
-                                        no se puedan cambiar los datos o adulterarlos*/}
+            Box(
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.surfaceTint)
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = "",
+                    lineHeight = 8.sp
                 )
+            }
+            LazyColumn(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(top = 5.dp),
+                contentPadding = PaddingValues(16.dp, 8.dp),
+                verticalArrangement = Arrangement.spacedBy(0.dp)
+            ) {
+                items(data.tareas) { item ->
+                    RegistroItem(
+                        data = RegistroItemData(
+                            id_registro = item.id_registro,
+                            registro = item.registro,
+                            fecha_inicio_registro = item.fecha_creacion_registro,
+                            fecha_fin_registro = item.fecha_fin_registro
+                        ),
+                        onCheckedChange = {/*En el detalle historico no hacemos nada porque queremos que
+                                        no se puedan cambiar los datos o adulterarlos*/
+                        }
+                    )
+                }
             }
         }
 

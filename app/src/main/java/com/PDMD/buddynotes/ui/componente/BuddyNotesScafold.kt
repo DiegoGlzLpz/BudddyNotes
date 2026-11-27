@@ -8,16 +8,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -25,7 +24,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.PDMD.buddynotes.R
 import com.PDMD.buddynotes.ui.page.PantallaHistorico
-import com.PDMD.buddynotes.ui.page.PantallaInicio
 import com.PDMD.buddynotes.ui.theme.BuddyNotesTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -67,6 +65,7 @@ fun BuddyNotesScaffold(
         },
         bottomBar = {
             NavigationBar(
+                modifier = Modifier.padding(top=10.dp),
                 containerColor = MaterialTheme.colorScheme.surface,
                 contentColor = MaterialTheme.colorScheme.onSurface
             ) {
@@ -76,49 +75,71 @@ fun BuddyNotesScaffold(
                         onClick = onVolverClick,
                         icon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_back),
+                                painter = painterResource(id = R.drawable.ic_back_icon),
                                 contentDescription = stringResource(R.string.backIcon_description),
                             )
                         },
                         label = {
                             Text(
-                                text = "Volver",
+                                text = stringResource(R.string.backIcon_text),
                                 style = MaterialTheme.typography.labelMedium
                             )
-                        }
+                        },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = MaterialTheme.colorScheme.primary,
+                            selectedTextColor = MaterialTheme.colorScheme.primary,
+                            indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                            unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     )
                 }else {
                     NavigationBarItem(
-                        selected = rutaActual == "inicio",
+                        selected = rutaActual == stringResource(R.string.route_home),
+
                         onClick = onInicioClick,
                         icon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_home),
+                                painter = painterResource(id = R.drawable.ic_home_icon),
                                 contentDescription = stringResource(R.string.homeIcon_BuddyNotesScafold),
                             )
                         },
                         label = {
                             Text(
-                                text = "Inicio",
+                                text = stringResource(R.string.homeIcon_text),
                                 style = MaterialTheme.typography.labelMedium
                             )
-                        }
+                        },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            selectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                            unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     )
                     NavigationBarItem(
-                        selected = rutaActual == "historico",
+                        selected = rutaActual == stringResource(R.string.route_history),
                         onClick = onHistoricoClick,
                         icon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_history),
-                                contentDescription = stringResource(R.string.libros_aplilados_BuddyNotesScafold),
+                                painter = painterResource(id = R.drawable.ic_history_icon),
+                                contentDescription = stringResource(R.string.historyIcon_description),
                             )
                         },
                         label = {
                             Text(
-                                text = "Historico",
+                                text = stringResource(R.string.historyIcon_text),
                                 style = MaterialTheme.typography.labelMedium
                             )
-                        }
+                        },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            selectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                            unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     )
                 }
 

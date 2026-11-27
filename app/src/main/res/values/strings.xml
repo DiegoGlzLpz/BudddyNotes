@@ -11,7 +11,15 @@
     <string name="eyeIcon_ListaTareasCard">Icono de un ojo</string>
     <string name="watchIcon_ListaTareasCard">Icono de un reloj</string>
     <string name="dotIcon_DetalleHistoricoCard">Icono de un punto decorativo</string>
-    <string name="libros_aplilados_BuddyNotesScafold">Libros aplilados</string>
+    <string name="historyIcon_description">Libros aplilados</string>
     <string name="homeIcon_BuddyNotesScafold">Icono de casa para Inicio</string>
     <string name="backIcon_description">Flecha a la izquierda para volver</string>
+    <string name="description_PantallaDetalleHistorico">Consulta las notas de días anteriores</string>
+    <string name="description_PantallaHistorico">Consulta las notas de días anteriores</string>
+    <string name="description_PantallaInicio">Tareas para hoy:</string>
+    <string name="backIcon_text">Volver atras</string>
+    <string name="route_home">inicio</string>
+    <string name="homeIcon_text">Inicio</string>
+    <string name="route_history">historico</string>
+    <string name="historyIcon_text">Historico</string>
 </resources>

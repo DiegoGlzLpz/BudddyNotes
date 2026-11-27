@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -43,24 +44,26 @@ fun PantallaHistorico(
     Column(
         modifier=modifier
             .fillMaxWidth()
-            .background(Background),
+            .background(MaterialTheme.colorScheme.background),
         verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalAlignment =Alignment.CenterHorizontally
     ){
         Text(
             modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .padding(top=10.dp),
+                .fillMaxWidth(0.9f)
+                .padding(start = 5.dp, top = 10.dp),
             text= stringResource(R.string.historialDeNotas_PantallaHistorico),
             style = MaterialTheme.typography.titleLarge,
-            textAlign = TextAlign.Center
+            textDecoration = TextDecoration.Underline,
+            textAlign = TextAlign.Start
         )
         Text(
             modifier = Modifier
-                .fillMaxWidth(0.8f),
-            text="Consulta las notas de días anteriores",
+                .fillMaxWidth(0.9f)
+                .padding(start = 5.dp),
+            text= stringResource(R.string.description_PantallaHistorico),
             style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Start
         )
 
         LazyColumn(

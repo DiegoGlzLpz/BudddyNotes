@@ -11,11 +11,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.unit.dp
+import com.PDMD.buddynotes.R
 import com.PDMD.buddynotes.model.FormatterFechas
 import com.PDMD.buddynotes.ui.componente.DetalleHisticoCard
 import com.PDMD.buddynotes.ui.componente.DetalleHistoricoData
@@ -37,25 +39,25 @@ fun PantallaDetalleHistorico(
     }
     Column(modifier=modifier
         .fillMaxWidth()
-        .background(Background),
+        .background(MaterialTheme.colorScheme.background),
         horizontalAlignment =Alignment.CenterHorizontally
         ){
         Text(
             modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .padding(top=10.dp),
+                .fillMaxWidth(0.9f)
+                .padding(start = 5.dp, top = 10.dp),
             text=FormatterFechas.format(datos.fecha_lista),
             style = MaterialTheme.typography.titleLarge,
-            textAlign = TextAlign.Center,
+            textAlign = TextAlign.Start,
             textDecoration = TextDecoration.Underline
         )
         Text(
             modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .padding(bottom = 15.dp),
-            text="Consulta las notas de días anteriores",
+                .fillMaxWidth(0.9f)
+                .padding(start = 5.dp,bottom = 15.dp),
+            text= stringResource(R.string.description_PantallaDetalleHistorico),
             style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Start
         )
         DetalleHisticoCard(
             data= DetalleHistoricoData(datos.id_lista,datos.fecha_lista,datos.tareas),

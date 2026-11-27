@@ -150,7 +150,7 @@ fun ListaTareasCard(
                 Row(modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(6.dp))
-                    .background(color = MaterialTheme.colorScheme.background)
+                    .background(color = MaterialTheme.colorScheme.primary)
                     .padding(10.dp, 10.dp)
                         ,
                     horizontalArrangement = Arrangement.SpaceBetween,
