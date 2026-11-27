@@ -3,6 +3,7 @@ package com.PDMD.buddynotes.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.PDMD.buddynotes.model.Tarea
+import com.PDMD.buddynotes.model.datosEjemplolistaTareasHistorico
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -20,11 +21,8 @@ class PantallaInicioVM: ViewModel(){
     val uiState = _uiState.asStateFlow();
 
     fun dailyTasksLoad(){
-        _uiState.value = _uiState.value.copy(tareasHoy = listOf(
-            Tarea(1, "Estudiar",Date(),null),
-            Tarea(2, "Programar en Kotlin",Date(),null),
-            Tarea(3, "Leer",Date(),Date()),
-        ))
+        val testData = datosEjemplolistaTareasHistorico.find { it.id_lista==1 }?.tareas?: listOf();
+        _uiState.value = _uiState.value.copy(tareasHoy = testData )
 
     }
     fun updateTaskStatus(idRegistro: Int, checked: Boolean) {

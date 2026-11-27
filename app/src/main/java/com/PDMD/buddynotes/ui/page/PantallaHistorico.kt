@@ -14,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -42,26 +44,28 @@ fun PantallaHistorico(
         modifier=modifier
             .fillMaxWidth()
             .background(Background),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalAlignment =Alignment.CenterHorizontally
     ){
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 24.dp, top = 15.dp),
+                .fillMaxWidth(0.8f)
+                .padding(top=10.dp),
             text= stringResource(R.string.historialDeNotas_PantallaHistorico),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
+            textAlign = TextAlign.Center
         )
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 24.dp)
-            ,
+                .fillMaxWidth(0.8f),
             text="Consulta las notas de días anteriores",
-            style = MaterialTheme.typography.bodySmall
+            style = MaterialTheme.typography.bodySmall,
+            textAlign = TextAlign.Center
         )
 
         LazyColumn(
-            contentPadding = PaddingValues(all=20.dp),
+            modifier = Modifier
+                .fillMaxWidth(0.90f),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ){
             items(uiState.listasDiasAnteriores,key = {it.id_lista}) {

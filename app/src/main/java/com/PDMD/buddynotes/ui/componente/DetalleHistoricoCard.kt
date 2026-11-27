@@ -144,7 +144,7 @@ fun DetalleHisticoCard(
                 .fillMaxSize()
                 .padding(top = 5.dp),
             contentPadding = PaddingValues(16.dp,8.dp),
-            verticalArrangement = Arrangement.spacedBy(-4.dp)
+            verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
             items(data.tareas) { item ->
                 RegistroItem(

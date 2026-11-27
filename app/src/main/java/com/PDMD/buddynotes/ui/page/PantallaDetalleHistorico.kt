@@ -11,6 +11,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.unit.dp
@@ -40,22 +42,24 @@ fun PantallaDetalleHistorico(
         ){
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(start=24.dp,top=15.dp),
+                .fillMaxWidth(0.8f)
+                .padding(top=10.dp),
             text=FormatterFechas.format(datos.fecha_lista),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
+            textAlign = TextAlign.Center,
+            textDecoration = TextDecoration.Underline
         )
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(start=24.dp)
-            ,
+                .fillMaxWidth(0.8f)
+                .padding(bottom = 15.dp),
             text="Consulta las notas de días anteriores",
-            style = MaterialTheme.typography.bodySmall
+            style = MaterialTheme.typography.bodySmall,
+            textAlign = TextAlign.Center
         )
         DetalleHisticoCard(
             data= DetalleHistoricoData(datos.id_lista,datos.fecha_lista,datos.tareas),
-            modifier = Modifier.fillMaxWidth(0.8f),
+            modifier = Modifier.fillMaxWidth(0.9f),
         )
     }
 

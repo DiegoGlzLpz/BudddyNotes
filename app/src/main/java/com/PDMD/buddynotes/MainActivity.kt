@@ -32,11 +32,12 @@ class MainActivity : ComponentActivity() {
                 val currentRoute = backStackEntry?.destination?.route
 
                 val tituloTopBar = stringResource(R.string.app_name)
+                var mostrarVolverUnicamente = currentRoute?.startsWith("detalleHistorico") == true;
                 BuddyNotesScaffold(
                     tituloTopBar = tituloTopBar,
                     rutaActual = currentRoute,
-                    mostrarBotonVolver = false,
-                    onVolverClick = {},
+                    mostrarBotonVolver = mostrarVolverUnicamente,
+                    onVolverClick = {navController.navigate("historico")},
                     onInicioClick = {navController.navigate("inicio")},
                     onHistoricoClick = {navController.navigate("historico")}
                 ) { innerPadding ->

@@ -70,38 +70,57 @@ fun BuddyNotesScaffold(
                 containerColor = MaterialTheme.colorScheme.surface,
                 contentColor = MaterialTheme.colorScheme.onSurface
             ) {
-                NavigationBarItem(
-                    selected = rutaActual == "inicio",
-                    onClick = onInicioClick,
-                    icon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_home),
-                            contentDescription = stringResource(R.string.homeIcon_BuddyNotesScafold),
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = "Inicio",
-                            style = MaterialTheme.typography.labelMedium
-                        )
-                    }
-                )
-                NavigationBarItem(
-                    selected = rutaActual == "historico",
-                    onClick = onHistoricoClick,
-                    icon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_history),
-                            contentDescription = stringResource(R.string.libros_aplilados_BuddyNotesScafold),
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = "Historico",
-                            style = MaterialTheme.typography.labelMedium
-                        )
-                    }
-                )
+                if (mostrarBotonVolver){
+                    NavigationBarItem(
+                        selected = false,
+                        onClick = onVolverClick,
+                        icon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_back),
+                                contentDescription = stringResource(R.string.backIcon_description),
+                            )
+                        },
+                        label = {
+                            Text(
+                                text = "Volver",
+                                style = MaterialTheme.typography.labelMedium
+                            )
+                        }
+                    )
+                }else {
+                    NavigationBarItem(
+                        selected = rutaActual == "inicio",
+                        onClick = onInicioClick,
+                        icon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_home),
+                                contentDescription = stringResource(R.string.homeIcon_BuddyNotesScafold),
+                            )
+                        },
+                        label = {
+                            Text(
+                                text = "Inicio",
+                                style = MaterialTheme.typography.labelMedium
+                            )
+                        }
+                    )
+                    NavigationBarItem(
+                        selected = rutaActual == "historico",
+                        onClick = onHistoricoClick,
+                        icon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_history),
+                                contentDescription = stringResource(R.string.libros_aplilados_BuddyNotesScafold),
+                            )
+                        },
+                        label = {
+                            Text(
+                                text = "Historico",
+                                style = MaterialTheme.typography.labelMedium
+                            )
+                        }
+                    )
+                }
 
             }
         },
